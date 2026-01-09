@@ -1,0 +1,356 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.mode-selector {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mode-btn.active {
+    background: #4a90d9;
+    box-shadow: 0 4px 15px rgba(74, 144, 217, 0.4);
+}
+
+.mode-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 280px;
+    gap: 8px;
+}
+
+.score {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.score-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.score-value {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.player-x .score-value {
+    color: #ff6b6b;
+}
+
+.player-o .score-value {
+    color: #4ecdc4;
+}
+
+.draws .score-value {
+    color: #ffe66d;
+}
+
+.status {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cell {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cell:hover {
+    transform: scale(1.02);
+}
+
+.cell:active {
+    transform: scale(0.98);
+}
+
+.cell.x {
+    color: #ff6b6b;
+}
+
+.cell.o {
+    color: #4ecdc4;
+}
+
+.cell.winner {
+    background: #ffe66d;
+    animation: pulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+.cell.taken {
+    cursor: not-allowed;
+}
+
+.cell.taken:hover {
+    transform: none;
+}
+
+.restart-btn {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.restart-btn:active {
+    transform: translateY(0);
+}
+
+/* Mobile optimizations */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .container {
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .board {
+        max-width: 240px;
+        gap: 4px;
+        padding: 4px;
+    }
+    
+    .cell {
+        font-size: 2rem;
+        border-radius: 6px;
+    }
+    
+    .score-board {
+        max-width: 260px;
+    }
+    
+    .score {
+        padding: 6px;
+    }
+    
+    .score-value {
+        font-size: 1.1rem;
+    }
+    
+    .status {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .board {
+        max-width: 200px;
+    }
+    
+    .cell {
+        font-size: 1.6rem;
+    }
+    
+    .mode-selector {
+        flex-direction: column;
+    }
+    
+    .score-board {
+        flex-wrap: wrap;
+    }
+    
+    .score {
+        min-width: calc(50% - 4px);
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+        gap: 8px;
+    }
+    
+    h1 {
+        width: 100%;
+        font-size: 1.2rem;
+    }
+    
+    .mode-selector {
+        order: 1;
+        max-width: 120px;
+    }
+    
+    .score-board {
+        order: 2;
+        flex-direction: column;
+        max-width: 80px;
+    }
+    
+    .status {
+        order: 3;
+        min-width: 100px;
+        padding: 6px;
+        font-size: 0.8rem;
+    }
+    
+    .board {
+        order: 4;
+        max-width: 180px;
+    }
+    
+    .restart-btn {
+        order: 5;
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Animation for X and O */
+.cell.x::before,
+.cell.o::before {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* AI thinking indicator */
+.board.thinking .cell:not(.taken) {
+    opacity: 0.5;
+}
+
+.board.thinking::after {
+    content: 'AI Thinking...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+

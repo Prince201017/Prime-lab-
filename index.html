@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tic Tac Toe</h1>
+        
+        <div class="mode-selector">
+            <button id="pvpBtn" class="mode-btn active">2 Players</button>
+            <button id="aiBtn" class="mode-btn">vs AI</button>
+        </div>
+
+        <div class="score-board">
+            <div class="score player-x">
+                <span class="score-label">Player X</span>
+                <span id="scoreX" class="score-value">0</span>
+            </div>
+            <div class="score player-o">
+                <span class="score-label">Player O / AI</span>
+                <span id="scoreO" class="score-value">0</span>
+            </div>
+            <div class="score draws">
+                <span class="score-label">Draws</span>
+                <span id="scoreDraw" class="score-value">0</span>
+            </div>
+        </div>
+
+        <div id="status" class="status">Player X's Turn</div>
+
+        <div id="board" class="board">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+
+        <button id="restartBtn" class="restart-btn">New Game</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
